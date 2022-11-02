@@ -9,7 +9,7 @@ class LRUCache<K, V>(capacity: Int) {
         set(value) {
             require(value > 0)
             var l = lst.back
-            while(l != null && hashTable.size > value) {
+            while (l != null && hashTable.size > value) {
                 l.removeSelf()
                 l = l.back
             }
@@ -34,14 +34,14 @@ class LRUCache<K, V>(capacity: Int) {
         return node.value
     }
 
-    fun put(k: K, v: V) : Pair<K, V>? {
+    fun put(k: K, v: V): Pair<K, V>? {
         val newNode = NodeV(k, v)
-        val oldNode = hashTable.replace(k,  newNode)
+        val oldNode = hashTable.replace(k, newNode)
         oldNode?.removeSelf()
         fst.putAfter(newNode)
 
         hashTable[k] = newNode
-        if(hashTable.size > capacity) {
+        if (hashTable.size > capacity) {
             val last = lst.back!! as NodeV<K, V>
             last.removeSelf()
             hashTable.remove(last.key)

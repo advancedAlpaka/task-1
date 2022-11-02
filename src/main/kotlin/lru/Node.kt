@@ -9,7 +9,7 @@ open class Node<K, V>(
         next?.back = back
     }
 
-    fun putAfter(node : Node<K, V>) {
+    fun putAfter(node: Node<K, V>) {
         node.back = this
         node.next = next
 
@@ -18,7 +18,7 @@ open class Node<K, V>(
     }
 }
 
-data class NodeV<K, V> (
+data class NodeV<K, V>(
     val key: K,
     val value: V
 ) : Node<K, V>() {
